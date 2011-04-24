@@ -26,6 +26,7 @@ package com.sk89q.craftbook.ic;
  * @author sk89q
  */
 public interface IC {
+    
     /**
      * @return the title of the IC.
      */

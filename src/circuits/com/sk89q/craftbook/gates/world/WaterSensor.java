@@ -22,9 +22,7 @@ import org.bukkit.Server;
 import org.bukkit.block.Block;
 import org.bukkit.block.Sign;
 import com.sk89q.craftbook.ic.AbstractIC;
-import com.sk89q.craftbook.ic.AbstractICFactory;
 import com.sk89q.craftbook.ic.ChipState;
-import com.sk89q.craftbook.ic.IC;
 import com.sk89q.craftbook.util.SignUtil;
 
 public class WaterSensor extends AbstractIC {
@@ -79,21 +77,6 @@ public class WaterSensor extends AbstractIC {
                 .getBlockTypeIdAt(x, yOffset, z);
 
         return (blockID == 8 || blockID == 9);
-    }
-
-    public static class Factory extends AbstractICFactory {
-
-        protected boolean risingEdge;
-
-        public Factory(Server server, boolean risingEdge) {
-            super(server);
-            this.risingEdge = risingEdge;
-        }
-
-        @Override
-        public IC create(Sign sign) {
-            return new WaterSensor(getServer(), sign, risingEdge);
-        }
     }
 
 }

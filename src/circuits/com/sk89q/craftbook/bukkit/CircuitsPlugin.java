@@ -114,8 +114,8 @@ public class CircuitsPlugin extends BaseBukkitPlugin {
         //Missing: 1206                                                                         // REQ PERM
         icManager.register("MC1230", new DaySensor.Factory(server, true), familySISO);
         icManager.register("MC1231", new TimeControl.Factory(server, true), familySISO);        // REQ PERM
-        icManager.register("MC1260", new WaterSensor.Factory(server, true), familySISO);
-        icManager.register("MC1261", new LavaSensor.Factory(server, true), familySISO);
+        icManager.register("MC1260", new GenericICFactory.RaisingEdgeICFactory(server, WaterSensor.class, true), familySISO);
+        icManager.register("MC1261", new GenericICFactory.RaisingEdgeICFactory(server, LavaSensor.class, true), familySISO);
         icManager.register("MC1262", new LightSensor.Factory(server, true), familySISO);
         //Missing: 1240 (replaced by dispenser?)                                                // REQ PERM
         //Missing: 1241 (replaced by dispenser?)                                                // REQ PERM
@@ -150,8 +150,8 @@ public class CircuitsPlugin extends BaseBukkitPlugin {
         
         //Self triggered
         icManager.register("MC0111", new WirelessReceiverST.Factory(server), familySISO);
-        icManager.register("MC0260", new WaterSensorST.Factory(server), familySISO);
-        icManager.register("MC0261", new LavaSensorST.Factory(server), familySISO);
+        icManager.register("MC0260", new GenericICFactory.DefaultICFactory(server, WaterSensorST.class), familySISO);
+        icManager.register("MC0261", new GenericICFactory.DefaultICFactory(server, LavaSensorST.class), familySISO);
         
         //Missing: 0020
 	    //Missing: 0230     

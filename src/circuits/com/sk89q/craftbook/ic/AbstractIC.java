@@ -31,9 +31,14 @@ public abstract class AbstractIC implements IC {
     private Server server;
     private Sign sign;
     
-    public AbstractIC(Server server, Sign block) {
+    /**
+     * Creates a new abstract IC.
+     * @param server the server where the IC is in.
+     * @param sign the sign of the IC.
+     */
+    public AbstractIC(Server server, Sign sign) {
         this.server = server;
-        this.sign = block;
+        this.sign = sign;
     }
     
     protected Server getServer() {
