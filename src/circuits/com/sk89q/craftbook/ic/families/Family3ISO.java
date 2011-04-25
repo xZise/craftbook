@@ -18,13 +18,11 @@
 
 package com.sk89q.craftbook.ic.families;
 
-import com.sk89q.craftbook.bukkit.BukkitUtil;
+import com.sk89q.craftbook.ic.AbstractConstantChipState;
 import com.sk89q.craftbook.ic.AbstractICFamily;
 import com.sk89q.craftbook.ic.ChipState;
-import com.sk89q.craftbook.ic.ICUtil;
 import com.sk89q.craftbook.util.BlockWorldVector;
 import com.sk89q.craftbook.util.SignUtil;
-import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.block.BlockFace;
 import org.bukkit.block.Sign;
@@ -41,14 +39,10 @@ public class Family3ISO extends AbstractICFamily {
         return new ChipState3ISO(source, sign);
     }
 
-    public static class ChipState3ISO implements ChipState {
-
-        protected Sign sign;
-        protected BlockWorldVector source;
+    public static class ChipState3ISO extends AbstractConstantChipState {
 
         public ChipState3ISO(BlockWorldVector source, Sign sign) {
-            this.sign = sign;
-            this.source = source;
+            super(source, sign, 3, 1);
         }
 
         protected Block getBlock(int pin) {
@@ -66,72 +60,5 @@ public class Family3ISO extends AbstractICFamily {
                     return null;
             }
         }
-
-        @Override
-        public boolean get(int pin) {
-            Block block = getBlock(pin);
-            if (block != null) {
-                return block.isBlockIndirectlyPowered();
-            } else {
-                return false;
-            }
-        }
-
-        @Override
-        public void set(int pin, boolean value) {
-            Block block = getBlock(pin);
-            if (block != null) {
-                ICUtil.setState(block, value);
-            } else {
-                return;
-            }
-        }
-
-        @Override
-        public boolean isTriggered(int pin) {
-            Block block = getBlock(pin);
-            if (block != null) {
-                return BukkitUtil.toWorldVector(block).equals(source);
-            } else {
-                return false;
-            }
-        }
-
-        @Override
-        public boolean isValid(int pin) {
-            Block block = getBlock(pin);
-            if (block != null) {
-                return block.getType() == Material.REDSTONE_WIRE;
-            } else {
-                return false;
-            }
-        }
-
-        @Override
-        public boolean getInput(int inputIndex) {
-            return get(inputIndex);
-        }
-
-        @Override
-        public boolean getOutput(int outputIndex) {
-            return get(outputIndex + 3);
-        }
-
-        @Override
-        public void setOutput(int outputIndex, boolean value) {
-            set(outputIndex + 3, value);
-        }
-
-        @Override
-        public int getInputCount() {
-            return 3;
-        }
-
-        @Override
-        public int getOutputCount() {
-            return 1;
-        }
-
     }
-
 }
