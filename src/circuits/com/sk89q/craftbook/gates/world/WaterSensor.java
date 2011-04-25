@@ -18,20 +18,14 @@
 
 package com.sk89q.craftbook.gates.world;
 
-import org.bukkit.Server;
 import org.bukkit.block.Block;
-import org.bukkit.block.Sign;
-import com.sk89q.craftbook.ic.AbstractIC;
 import com.sk89q.craftbook.ic.ChipState;
 import com.sk89q.craftbook.util.SignUtil;
 
-public class WaterSensor extends AbstractIC {
-
-    protected boolean risingEdge;
-
-    public WaterSensor(Server server, Sign sign, boolean risingEdge) {
-        super(server, sign);
-        this.risingEdge = risingEdge;
+public class WaterSensor extends AbstractRisingEdgeIC {
+    
+    public WaterSensor() {
+        super();
     }
 
     @Override
@@ -78,5 +72,4 @@ public class WaterSensor extends AbstractIC {
 
         return (blockID == 8 || blockID == 9);
     }
-
 }

@@ -27,6 +27,7 @@ import com.sk89q.craftbook.MechanicManager;
 import com.sk89q.craftbook.circuits.*;
 import com.sk89q.craftbook.gates.logic.*;
 import com.sk89q.craftbook.gates.world.*;
+import com.sk89q.craftbook.ic.GenericICFactory;
 import com.sk89q.craftbook.ic.ICFamily;
 import com.sk89q.craftbook.ic.ICManager;
 import com.sk89q.craftbook.ic.ICMechanicFactory;
@@ -114,8 +115,8 @@ public class CircuitsPlugin extends BaseBukkitPlugin {
         //Missing: 1206                                                                         // REQ PERM
         icManager.register("MC1230", new DaySensor.Factory(server, true), familySISO);
         icManager.register("MC1231", new TimeControl.Factory(server, true), familySISO);        // REQ PERM
-        icManager.register("MC1260", new GenericICFactory.RaisingEdgeICFactory(server, WaterSensor.class, true), familySISO);
-        icManager.register("MC1261", new GenericICFactory.RaisingEdgeICFactory(server, LavaSensor.class, true), familySISO);
+        icManager.register("MC1260", new GenericICFactory.RisingEdgeICFactory<WaterSensor>(server, WaterSensor.class, true), familySISO);
+        icManager.register("MC1261", new GenericICFactory.RisingEdgeICFactory<LavaSensor>(server, LavaSensor.class, true), familySISO);
         icManager.register("MC1262", new LightSensor.Factory(server, true), familySISO);
         //Missing: 1240 (replaced by dispenser?)                                                // REQ PERM
         //Missing: 1241 (replaced by dispenser?)                                                // REQ PERM
@@ -150,8 +151,8 @@ public class CircuitsPlugin extends BaseBukkitPlugin {
         
         //Self triggered
         icManager.register("MC0111", new WirelessReceiverST.Factory(server), familySISO);
-        icManager.register("MC0260", new GenericICFactory.DefaultICFactory(server, WaterSensorST.class), familySISO);
-        icManager.register("MC0261", new GenericICFactory.DefaultICFactory(server, LavaSensorST.class), familySISO);
+        icManager.register("MC0260", new GenericICFactory.DefaultICFactory<WaterSensorST>(server, WaterSensorST.class), familySISO);
+        icManager.register("MC0261", new GenericICFactory.DefaultICFactory<LavaSensorST>(server, LavaSensorST.class), familySISO);
         
         //Missing: 0020
 	    //Missing: 0230     

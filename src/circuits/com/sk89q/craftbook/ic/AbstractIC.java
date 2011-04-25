@@ -37,6 +37,14 @@ public abstract class AbstractIC implements IC {
      * @param sign the sign of the IC.
      */
     public AbstractIC(Server server, Sign sign) {
+        this.init(server, sign);
+    }
+    
+    protected AbstractIC() {
+        this(null, null);
+    }
+    
+    public void init(Server server, Sign sign) {
         this.server = server;
         this.sign = sign;
     }

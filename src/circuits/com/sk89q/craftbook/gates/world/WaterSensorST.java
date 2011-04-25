@@ -18,19 +18,14 @@
 
 package com.sk89q.craftbook.gates.world;
 
-import org.bukkit.Server;
 import org.bukkit.block.Block;
-import org.bukkit.block.Sign;
 import com.sk89q.craftbook.ic.AbstractIC;
 import com.sk89q.craftbook.ic.ChipState;
+import com.sk89q.craftbook.ic.DefaultIC;
 import com.sk89q.craftbook.ic.SelfTriggeredIC;
 import com.sk89q.craftbook.util.SignUtil;
 
-public class WaterSensorST extends AbstractIC implements SelfTriggeredIC {
-
-    public WaterSensorST(Server server, Sign sign) {
-        super(server, sign);
-    }
+public class WaterSensorST extends AbstractIC implements SelfTriggeredIC, DefaultIC {
 
     @Override
     public String getTitle() {
@@ -82,5 +77,4 @@ public class WaterSensorST extends AbstractIC implements SelfTriggeredIC {
 
 	@Override
 	public void trigger(ChipState chip) {}
-
 }
