@@ -94,7 +94,7 @@ public class CircuitsPlugin extends BaseBukkitPlugin {
         ICFamily familySISO = new FamilySISO();
         ICFamily family3ISO = new Family3ISO();
         ICFamily familySI3O = new FamilySI3O();
-        //ICFamily family3I3O = new Family3I3O();
+        ICFamily family3I3O = new Family3I3O();
         
         //SISOs
         icManager.register("MC9999", new ResurrectDumbledore.Factory(server, true), familySISO);
@@ -142,7 +142,7 @@ public class CircuitsPlugin extends BaseBukkitPlugin {
         //Missing: 3231                                                                         // REQ PERM
         
         //3I3Os
-        //Missing: 4000
+        icManager.register("MC4000", new FullAdder.Factory(server), family3I3O);
         //Missing: 4010
         //Missing: 4100
         //Missing: 4110
