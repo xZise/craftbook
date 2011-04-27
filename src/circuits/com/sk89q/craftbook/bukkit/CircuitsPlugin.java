@@ -143,10 +143,10 @@ public class CircuitsPlugin extends BaseBukkitPlugin {
         
         //3I3Os
         icManager.register("MC4000", new FullAdder.Factory(server), family3I3O);
-        //Missing: 4010
-        //Missing: 4100
-        //Missing: 4110
-        //Missing: 4200
+        icManager.register("MC4010", new HalfAdder.Factory(server), family3I3O);
+        icManager.register("MC4100", new FullSubstractor.Factory(server), family3I3O);
+        icManager.register("MC4110", new HalfSubstractor.Factory(server), family3I3O);
+        icManager.register("MC4200", new Dispatcher.Factory(server), family3I3O);
         
         //Self triggered
         icManager.register("MC0111", new WirelessReceiverST.Factory(server), familySISO);

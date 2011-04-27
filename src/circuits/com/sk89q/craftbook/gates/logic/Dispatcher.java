@@ -9,48 +9,45 @@ import com.sk89q.craftbook.ic.ChipState;
 import com.sk89q.craftbook.ic.IC;
 
 /**
- * Full adder representing MC4000.
+ * Dispatcher representing MC4200.
  * 
  * @author Fabian Neundorf
  */
-public class FullAdder extends AbstractIC {
+public class Dispatcher extends AbstractIC {
 
-    public FullAdder(Server server, Sign block) {
+    public Dispatcher(Server server, Sign block) {
         super(server, block);
     }
 
     @Override
     public String getTitle() {
-        return "Full adder";
+        return "Dispatcher";
     }
 
     @Override
     public String getSignTitle() {
-        return "FULL ADDER";
+        return "DISPATCHER";
     }
 
     @Override
     public void trigger(ChipState chip) {
-        boolean x = chip.getInput(0);
-        boolean y = chip.getInput(1);
-        boolean cIn = chip.getInput(2);
-        boolean s = x ^ y ^ cIn;
-        boolean cOut = (y && cIn) || (x && cIn) || (x && y);
-        chip.setOutput(0, s);
-        chip.setOutput(1, cOut);
-        chip.setOutput(2, cOut);
+        if (chip.get(1)) {
+            chip.setOutput(1, chip.get(0));
+        }
+        
+        if (chip.get(2)) {
+            chip.setOutput(2, chip.get(0));
+        }
     }
 
     public static class Factory extends AbstractICFactory {
-
         public Factory(Server server) {
             super(server);
         }
-
+        
         @Override
         public IC create(Sign sign) {
-            return new FullAdder(getServer(), sign);
+            return new Dispatcher(getServer(), sign);
         }
     }
-    
 }

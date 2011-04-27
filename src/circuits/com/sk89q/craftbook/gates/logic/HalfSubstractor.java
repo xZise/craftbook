@@ -9,38 +9,37 @@ import com.sk89q.craftbook.ic.ChipState;
 import com.sk89q.craftbook.ic.IC;
 
 /**
- * Full adder representing MC4000.
+ * Half substractor representing MC4110.
  * 
  * @author Fabian Neundorf
  */
-public class FullAdder extends AbstractIC {
+public class HalfSubstractor extends AbstractIC {
 
-    public FullAdder(Server server, Sign block) {
+    public HalfSubstractor(Server server, Sign block) {
         super(server, block);
     }
 
     @Override
     public String getTitle() {
-        return "Full adder";
+        return "Half substractor";
     }
 
     @Override
     public String getSignTitle() {
-        return "FULL ADDER";
+        return "HALF SUBSTRACT";
     }
 
     @Override
     public void trigger(ChipState chip) {
-        boolean x = chip.getInput(0);
-        boolean y = chip.getInput(1);
-        boolean cIn = chip.getInput(2);
-        boolean s = x ^ y ^ cIn;
-        boolean cOut = (y && cIn) || (x && cIn) || (x && y);
-        chip.setOutput(0, s);
-        chip.setOutput(1, cOut);
-        chip.setOutput(2, cOut);
+        boolean m = chip.getInput(1);
+        boolean s = chip.getInput(2);
+        boolean d = m ^ s;
+        boolean b = !m && s;
+        chip.setOutput(0, d);
+        chip.setOutput(1, b);
+        chip.setOutput(2, b);
     }
-
+    
     public static class Factory extends AbstractICFactory {
 
         public Factory(Server server) {
@@ -49,7 +48,7 @@ public class FullAdder extends AbstractIC {
 
         @Override
         public IC create(Sign sign) {
-            return new FullAdder(getServer(), sign);
+            return new HalfSubstractor(getServer(), sign);
         }
     }
     
