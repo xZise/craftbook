@@ -4,10 +4,13 @@ import org.bukkit.Server;
 import org.bukkit.block.Sign;
 
 import com.sk89q.craftbook.ic.AbstractIC;
+import com.sk89q.craftbook.ic.AbstractICFactory;
 import com.sk89q.craftbook.ic.ChipState;
+import com.sk89q.craftbook.ic.IC;
+import com.sk89q.craftbook.ic.RestrictedIC;
 import com.sk89q.craftbook.ic.SelfTriggeredIC;
 
-public class PeakGate extends AbstractIC implements SelfTriggeredIC {
+public class PulseGateST extends AbstractIC implements SelfTriggeredIC {
     
     private final boolean rising;
     private final boolean falling;
@@ -16,7 +19,7 @@ public class PeakGate extends AbstractIC implements SelfTriggeredIC {
     private Boolean previous;
     private int remainingTick;
     
-    public PeakGate(Server server, Sign block) {
+    public PulseGateST(Server server, Sign block) {
         super(server, block);
         
         boolean rising = false;
@@ -101,6 +104,18 @@ public class PeakGate extends AbstractIC implements SelfTriggeredIC {
     @Override
     public void think(ChipState state) {
         this.trigger(state);
+    }
+    
+    public static class Factory extends AbstractICFactory implements RestrictedIC {
+
+        public Factory(Server server) {
+            super(server);
+        }
+
+        @Override
+        public IC create(Sign sign) {
+            return new PulseGateST(getServer(), sign);
+        }
     }
 
 }

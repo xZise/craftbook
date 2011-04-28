@@ -100,6 +100,7 @@ public class CircuitsPlugin extends BaseBukkitPlugin {
         icManager.register("MC9999", new ResurrectDumbledore.Factory(server, true), familySISO);
         icManager.register("MC1000", new Repeater.Factory(server), familySISO);
         icManager.register("MC1001", new Inverter.Factory(server), familySISO);
+        icManager.register("MC1005", new PulseGateST.Factory(server), familySISO);
         icManager.register("MC1017", new ToggleFlipFlop.Factory(server, true), familySISO);
         icManager.register("MC1018", new ToggleFlipFlop.Factory(server, false), familySISO);
         icManager.register("MC1020", new RandomBit.Factory(server, true), familySISO);
