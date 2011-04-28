@@ -57,12 +57,12 @@ public class PulseGateST extends AbstractIC implements SelfTriggeredIC {
 
     @Override
     public String getTitle() {
-        return "Peak Gate";
+        return "Self-triggered Pulse Gate";
     }
 
     @Override
     public String getSignTitle() {
-        return "PEAK";
+        return "ST PULSE GATE";
     }
 
     @Override
