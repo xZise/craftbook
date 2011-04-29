@@ -1,6 +1,11 @@
 #binary
 bin/
 
+#ant build
+build/
+dist/
+lib/
+
 #eclipse
 .classpath
 .project
